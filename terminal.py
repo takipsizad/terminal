@@ -37,7 +37,7 @@ def text():
     print ('write the name of the file')
     textn = input()
     my_file = open(textn,"w+")
-    my_file = open("this_is_file.txt","w+")
+    my_file = open(,"w+")
     my_file.write(texti)
 
     
