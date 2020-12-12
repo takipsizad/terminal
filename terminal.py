@@ -34,7 +34,7 @@ def textcheck():
 def text():
     print ('write the text that you want')
     texti = input()
-    
+    print
 
 while True:
     cmd = input()
