@@ -31,8 +31,8 @@ def textcheck():
     if 'text' == cmd:
         text()
 
-def text
-
+def text():
+    
 while True:
     cmd = input()
     systemcheck()
