@@ -38,7 +38,7 @@ def text():
     textn = input()
     my_file = open(textn,"w+")
     my_file = open("this_is_file.txt","w+")
-my_file.write("Hey This text is going to be added to the text file yipeee!!!")
+    my_file.write("Hey This text is going to be added to the text file yipeee!!!")
 
     
 
