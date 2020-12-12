@@ -32,9 +32,9 @@ def textcheck():
         text()
 
 def text():
-    print ('write the text that you want ')
+    print ('write the text that you want  after ')
     texti = input()
-    
+
 while True:
     cmd = input()
     systemcheck()
