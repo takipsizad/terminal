@@ -30,6 +30,7 @@ def exitcheck():
 def textcheck():
     if 'text' == cmd:
         text()
+        
 
 while True:
     cmd = input()
