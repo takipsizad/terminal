@@ -34,7 +34,7 @@ def textcheck():
 def text():
     print ('write the text that you want')
     texti = input()
-    print ('write the text that you want')
+    print ('write the name of the file')
 
 while True:
     cmd = input()
