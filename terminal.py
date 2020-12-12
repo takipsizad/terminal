@@ -28,8 +28,6 @@ def exitcheck():
         exits()
 
 
-
-
 while True:
     cmd = input()
     systemcheck()
