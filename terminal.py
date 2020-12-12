@@ -36,6 +36,7 @@ def text():
     texti = input()
     print ('write the name of the file')
     textn = input()
+    
 
 while True:
     cmd = input()
