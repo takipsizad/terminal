@@ -32,6 +32,7 @@ def textcheck():
         text()
 
 def text():
+    print 
     texti = input()
 while True:
     cmd = input()
