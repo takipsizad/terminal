@@ -36,7 +36,7 @@ def text():
     texti = input()
     print ('write the name of the file')
     textn = input()
-    my_file = open("this_is_file.txt","w+")
+    my_file = open(textn,"w+")
 
 while True:
     cmd = input()
