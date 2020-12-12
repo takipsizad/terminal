@@ -32,7 +32,7 @@ def textcheck():
         text()
 
 def text():
-    print ('write the text that you want  after ')
+    print ('write the text that you want')
     texti = input()
 
 while True:
