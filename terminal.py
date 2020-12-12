@@ -28,7 +28,7 @@ def exitcheck():
         exits()
 
 def textcheck():
-    
+    if 
 
 while True:
     cmd = input()
