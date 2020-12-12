@@ -40,7 +40,7 @@ def text():
     my_file = open(textn,"w+")
     my_file.write(texti)
 
-    
+
 
 while True:
     cmd = input()
