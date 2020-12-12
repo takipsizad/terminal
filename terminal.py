@@ -27,7 +27,7 @@ def exitcheck():
     if 'exit' == cmd:
         exits()
 
-de 
+def txte
 
 while True:
     cmd = input()
