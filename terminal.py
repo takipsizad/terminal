@@ -13,11 +13,25 @@ def system():
     print (platform.platform())
 
 
-
+def fullosnamecheck():
+    if 'fullosname' == cmd:
+         fullosname()
 
 def fullosname():
      print (platform.uname())
 
+def exits():
+    exit()
+
+def exitcheck():
+    if 'exit' == cmd:
+        exits()
+
+
+
+
 while True:
-     cmd = input()
-    
+    cmd = input()
+    systemcheck()
+    fullosnamecheck()
+    exitcheck()
