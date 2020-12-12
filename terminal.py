@@ -33,4 +33,4 @@ while True:
     systemcheck()
     fullosnamecheck()
     exitcheck()
-    textcheck
+    textcheck()
