@@ -28,7 +28,7 @@ def fullosnamecheck():
          fullosname()
 
 def fullosname():
-     print (platform.uname())
+    print (platform.uname())
 
 def exits():
     exit()
@@ -44,12 +44,7 @@ def textcheck():
 def pythonversion():
     print (platform.python_version())
 
-def javaver():
-    print (platform.java_ver())
 
-def javavercheck():
-    if 'javaver' == cmd:
-        javaver()
 
 def textc():
     print ('write text that you want as file name')
@@ -76,7 +71,7 @@ def help():
     time.sleep(1)
     print ('pythonver')
     time.sleep(1)
-    print ('javaver')
+    print ('execute')
     print ('   ')
 
 def executes():
@@ -91,10 +86,20 @@ def executescheck():
 def pythonversioncheck():
     if 'pythonver' == cmd:
         pythonversion()
+def win_edition():
+    print(platform.win32_edition())
 
 def helpcheck():
     if 'help' == cmd:
         help()
+
+def win32_editioncheck():
+    if 'winedition' == cmd:
+        if 'Windows' == platform.system():
+            win_edition()
+        else 
+        print("ERROR this isnt windows os")
+    
 
 while True:
     cmd = input()
@@ -104,5 +109,5 @@ while True:
     textcheck()
     helpcheck()
     pythonversioncheck()
-    javavercheck()
     executescheck()
+    win32_editioncheck()
