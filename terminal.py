@@ -8,6 +8,8 @@ import socket
 import json
 import time
 import os
+from pytube import YouTube
+pip = "pip install ";
 
 system = platform.platform()
 release = platform.release()
@@ -70,6 +72,12 @@ def help():
     print ('execute')
     time.sleep(0.4)
     print ('evalpy')
+    time.sleep(0.4)
+    print ('youtube')
+    time.sleep(0.4)
+    print ('ip')
+    time.sleep(0.4)
+    print ('pip install')
     print ('   ')
 
 def executes():
@@ -123,13 +131,48 @@ def ipcheck():
 def ipprint():
     os.system('ipconfig')
 
+def youtubedownload():
+    print ('write the link of youtube video that you want do download')
+    ytlink = input()
+    yt = YouTube(ytlink)
+    stream = yt.streams.first()
+    stream.download("videos")
+    print ('done')
+
+def musicdownload():
+    print ('write the link of youtube video that you want do download')
+    ytmusiclink = input()
+    yt = YouTube(ytmusiclink)
+    stream = yt.streams.filter(audio_only=True).first()
+    stream.download("music")
+
+def musicdownloadcheck():
+    if 'youtube download music' == cmd:
+        musicdownload()
+
+def youtubedownloadcheck():
+    if 'youtube download video' ==cmd:
+        youtubedownload()
+
+def youtubehelp():
+    print("commands:")
+    time.sleep(0.4)
+    print("youtube download video")
+    time.sleep(0.4)
+    print("youtube download music")
+    print('              ')
+
+def youtubehelpc():
+    if 'youtube' == cmd:
+        youtubehelp()
+
 def pipinstall():
-    print ('write the packet that you want to install into python')
-    p = input()
-    os.system('pip install' ,p)
+    print("write the name of package that you want to install")
+    pythonpack = input()
+    os.system(pip + pythonpack)
 
 def pipinstallcheck():
-    if 'pipinstall' == cmd:
+    if 'pip install' == cmd:
         pipinstall()
 
 while True:
@@ -145,4 +188,7 @@ while True:
     creditcheck()
     evscheck()
     ipcheck()
+    youtubedownloadcheck()
+    musicdownloadcheck()
+    youtubehelpc()
     pipinstallcheck()
