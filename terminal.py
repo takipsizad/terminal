@@ -5,11 +5,9 @@ import asyncio
 import websockets
 import random
 import socket
-import time
 import json
 import time
 import os
-
 
 system = platform.platform()
 release = platform.release()
@@ -25,7 +23,7 @@ def system():
 
 def fullosnamecheck():
     if 'fullosname' == cmd:
-         fullosname()
+        fullosname()
 
 def fullosname():
     print (platform.uname())
@@ -44,8 +42,6 @@ def textcheck():
 def pythonversion():
     print (platform.python_version())
 
-
-
 def textc():
     print ('write text that you want as file name')
     texti = input()
@@ -58,20 +54,22 @@ def textc():
 
 def help():
     print ('commands:')
-    time.sleep(1)
+    time.sleep(0.4)
     print ('fullosname')
-    time.sleep(1)
+    time.sleep(0.4)
     print ('exit')
-    time.sleep(1)
+    time.sleep(0.4)
     print ('system')
-    time.sleep(1)
+    time.sleep(0.4)
     print ('help')
-    time.sleep(1)
+    time.sleep(0.4)
     print ('text')
-    time.sleep(1)
+    time.sleep(0.4)
     print ('pythonver')
-    time.sleep(1)
+    time.sleep(0.4)
     print ('execute')
+    time.sleep(0.4)
+    print ('evalpy')
     print ('   ')
 
 def executes():
@@ -97,9 +95,42 @@ def win32_editioncheck():
     if 'winedition' == cmd:
         if 'Windows' == platform.system():
             win_edition()
-        else 
-        print("ERROR this isnt windows os")
+        else:
+            print("ERROR this isnt windows os")
+
+def creditcheck():
+    if 'credits' == cmd:
+        creditst()
+
+def creditst():
+    print("credits:")
+    time.sleep(0.5)
+    print ("takipsizad 2020")
     
+def evscheck():
+    if 'evalpy' == cmd:
+        evals()
+
+def evals():
+    print('write the thing that you want to execute as python code')
+    evalcmd = input()
+    print(eval(evalcmd))
+
+def ipcheck():
+    if 'ip' == cmd:
+        ipprint()
+
+def ipprint():
+    os.system('ipconfig')
+
+def pipinstall():
+    print ('write the packet that you want to install into python')
+    p = input()
+    os.system('pip install' ,p)
+
+def pipinstallcheck():
+    if 'pipinstall' == cmd:
+        pipinstall()
 
 while True:
     cmd = input()
@@ -111,3 +142,7 @@ while True:
     pythonversioncheck()
     executescheck()
     win32_editioncheck()
+    creditcheck()
+    evscheck()
+    ipcheck()
+    pipinstallcheck()
