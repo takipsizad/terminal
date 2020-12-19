@@ -1,6 +1,5 @@
 import platform
 import subprocess
-import sys
 import asyncio
 import websockets
 import random
@@ -9,11 +8,17 @@ import json
 import time
 import os
 from pytube import YouTube
-pip = "pip install ";
-
+from pathlib import Path
+import requests
+import mojang
+from tkinter import *
+import webbrowser
+import urllib.request
+pip = 'pip install '
 system = platform.platform()
 release = platform.release()
 version = platform.version()
+print('design by takipsizad 2020  currently working on ' + system + version + ' source code: write sourcecode to open source code')
 
 def systemcheck():
     if 'system' == cmd:
@@ -31,6 +36,12 @@ def fullosname():
     print (platform.uname())
 
 def exits():
+    print ('closing')
+    time.sleep(0.1)
+    print ('[===d|*|b===]')
+    time.sleep(0.1)
+    time.sleep(0.1)
+    print('done')
     exit()
 
 def exitcheck():
@@ -160,6 +171,10 @@ def youtubehelp():
     print("youtube download video")
     time.sleep(0.4)
     print("youtube download music")
+    time.sleep(0.4)
+    print('youtube video info')
+    time.sleep(0.4)
+    print('youtube video info save')
     print('              ')
 
 def youtubehelpc():
@@ -174,6 +189,99 @@ def pipinstall():
 def pipinstallcheck():
     if 'pip install' == cmd:
         pipinstall()
+
+def ytinfo():
+    print ('write to link to video that you want to get information about ')
+    ytinfolink = input()
+    yt = YouTube(ytinfolink)
+    print('infos:')
+    time.sleep(0.4)
+    print('title')
+    print(yt.title)
+    time.sleep(0.4)
+    print('author')
+    print(yt.author)
+    time.sleep(0.4)
+    print('description')
+    print(yt.description)
+    time.sleep(0.4)
+    print('keywords') 
+    print(yt.keywords)
+    time.sleep(0.4)
+    print('length in second')
+    print(yt.length )
+    time.sleep(0.4)
+    print('metadata')
+    print(yt.metadata)
+    time.sleep(0.4)
+    print('publish date')
+    print(yt.publish_date)
+    time.sleep(0.4)
+    print('rating')
+    print(yt.rating)
+    time.sleep(0.4)
+    print('views')
+    print(yt.views)
+
+def videocheck():
+    if 'youtube video info' == cmd:
+        ytinfo()
+
+def youtubevideoinfosave():
+    print ('write to link to video that you want to get information about ')
+    texti = input()
+    yt = YouTube(texti)
+    info = open(yt.title + '.txt',"w+")
+    info.write(yt.title + ' :title \n')
+    info.write(yt.author + ' :author\n')
+    info.write(yt.description + ' :description\n')
+    info.write(yt.length + ' seconds :length\n')
+    info.write(yt.publish_date + ' :publish_date\n')
+    info.write(yt.rating + ' :rating\n')
+    info.write(yt.views + ' :views\n')
+    print ("done")
+
+def youtubevideoinfosavecheck():
+    if 'youtube video info save' == cmd:
+        youtubevideoinfosave()
+
+def haveibeenpwned():
+    print("write your password")
+    password = input()
+    pwned = requests.get('https://api.leakedpassword.com/pass/' + password)
+    print (pwned.json())
+
+def haveibeenpwndedcheck():
+    if 'haveibeenpwned' == cmd:
+        haveibeenpwned()
+
+def isiplegit():
+    print ('write ip that you want to check')
+    ip = input()
+    ipcheck = requests.get('https://api.iplegit.com/full?ip=' + ip)
+    print (ipcheck.json())
+
+def isiplegitcheck():
+    if 'ipcheck' == cmd:
+        isiplegit()
+
+def sourcecode():
+    webbrowser.open("https://github.com/takipsizad/terminal")
+
+def sourcecodecheck():
+    if 'sourcecode' == cmd:
+        sourcecode()
+
+def qrcode():
+    qrinfo = input()
+    url = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + qrinfo
+    r = urllib.request.urlopen(url)
+    with open("qr.png", "wb") as f:
+        f.write(r.read())
+
+def qrcodecheck():
+    if 'qrcode' == cmd:
+        qrcode()
 
 while True:
     cmd = input()
@@ -192,3 +300,9 @@ while True:
     musicdownloadcheck()
     youtubehelpc()
     pipinstallcheck()
+    youtubevideoinfosavecheck()
+    videocheck()
+    haveibeenpwndedcheck()
+    isiplegitcheck()
+    sourcecodecheck()
+    qrcodecheck()
