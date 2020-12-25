@@ -14,11 +14,14 @@ import mojang
 from tkinter import *
 import webbrowser
 import urllib.request
+import urllib.request
+
+
 pip = 'pip install '
 system = platform.platform()
 release = platform.release()
 version = platform.version()
-print('design by takipsizad 2020  currently working on ' + system + version + ' source code: write sourcecode to open source code')
+print('design by takipsizad 2020  currently working on ' + system + version + ' source code: write sourcecode to open github page')
 
 def systemcheck():
     if 'system' == cmd:
@@ -37,9 +40,6 @@ def fullosname():
 
 def exits():
     print ('closing')
-    time.sleep(0.1)
-    print ('[===d|*|b===]')
-    time.sleep(0.1)
     time.sleep(0.1)
     print('done')
     exit()
@@ -249,7 +249,15 @@ def haveibeenpwned():
     print("write your password")
     password = input()
     pwned = requests.get('https://api.leakedpassword.com/pass/' + password)
-    print (pwned.json())
+    jsonr = json.dumps(pwned.json())
+    print('is it leaked')
+    parsed_json = json.loads(jsonr)
+    parsed_json2 = parsed_json['password']
+    print(parsed_json2['leak'])
+    print('if its how many times:')
+    print(parsed_json2['seen'])
+
+#seen
 
 def haveibeenpwndedcheck():
     if 'haveibeenpwned' == cmd:
@@ -258,8 +266,18 @@ def haveibeenpwndedcheck():
 def isiplegit():
     print ('write ip that you want to check')
     ip = input()
-    ipcheck = requests.get('https://api.iplegit.com/full?ip=' + ip)
-    print (ipcheck.json())
+    ipcheck = requests.get('https://api.iplegit.com/info?ip=' + ip)
+    jsonr = json.dumps(ipcheck.json())
+    parsed_json = json.loads(jsonr)
+    parsed_json2 = parsed_json['bad']
+    parsed_json3 = parsed_json['type']
+    parsed_json4 = parsed_json['ip']
+    print('checked ip adress')
+    print(parsed_json4)
+    print('type')
+    print(parsed_json3)
+    print('bad:')
+    print (parsed_json2)
 
 def isiplegitcheck():
     if 'ipcheck' == cmd:
@@ -283,6 +301,24 @@ def qrcodecheck():
     if 'qrcode' == cmd:
         qrcode()
 
+def langdetect():
+    print("write your password server adress")
+    serveradress = input()
+    print('write the text that you want to detect language from that')
+    text = input()
+    res = requests.get('http://' + serveradress + '/api/langdetect?text=' + text)
+    jsonr = json.dumps(res.json())
+    parsed_json = json.loads(jsonr)
+    parsed_json2 = parsed_json['lang']
+    print(parsed_json2)
+
+def langdetectcheck():
+    if 'langdetect' == cmd:
+        langdetect()
+
+
+
+
 while True:
     cmd = input()
     systemcheck()
@@ -305,5 +341,5 @@ while True:
     haveibeenpwndedcheck()
     isiplegitcheck()
     sourcecodecheck()
-    qrcodecheck() 
-    
+    qrcodecheck()
+    langdetectcheck()
