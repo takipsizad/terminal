@@ -7,6 +7,7 @@ import socket
 import json
 import time
 import os
+import pytube
 from pytube import YouTube
 from pathlib import Path
 import requests
@@ -15,13 +16,14 @@ from tkinter import *
 import webbrowser
 import urllib.request
 import urllib.request
-
+import shutil
+import tarfile
 
 pip = 'pip install '
 system = platform.platform()
 release = platform.release()
 version = platform.version()
-print('design by takipsizad 2020  currently working on ' + system + version + ' source code: write sourcecode to open github page')
+print('design by takipsizad 2020  currently working on ' + system + version + ' \n source code: write sourcecode to open github page')
 
 def systemcheck():
     if 'system' == cmd:
@@ -67,28 +69,48 @@ def textc():
 
 def help():
     print ('commands:')
-    time.sleep(0.4)
+    time.sleep(0.2)
     print ('fullosname')
-    time.sleep(0.4)
+    time.sleep(0.2)
+    print('credits')
+    time.sleep(0.2)
     print ('exit')
-    time.sleep(0.4)
+    time.sleep(0.2)
     print ('system')
-    time.sleep(0.4)
+    time.sleep(0.2)
     print ('help')
-    time.sleep(0.4)
+    time.sleep(0.2)
     print ('text')
-    time.sleep(0.4)
+    time.sleep(0.2)
     print ('pythonver')
-    time.sleep(0.4)
+    time.sleep(0.2)
     print ('execute')
-    time.sleep(0.4)
+    time.sleep(0.2)
     print ('evalpy')
-    time.sleep(0.4)
+    time.sleep(0.2)
     print ('youtube')
-    time.sleep(0.4)
+    time.sleep(0.2)
     print ('ip')
-    time.sleep(0.4)
+    time.sleep(0.2)
     print ('pip install')
+    time.sleep(0.2)
+    print ('haveibeenpwndedcheck')
+    time.sleep(0.2)
+    print('ipcheck')
+    time.sleep(0.2)
+    print('qrcode')
+    time.sleep(0.2)
+    print('langdetect')
+    time.sleep(0.2)
+    print('winedition')
+    time.sleep(0.2)
+    print('haveibeenpwned')
+    time.sleep(0.2)
+    print('shadoweval')
+    time.sleep(0.2)
+    print('ip')
+    time.sleep(0.2)
+    print('webblacklist')
     print ('   ')
 
 def executes():
@@ -154,8 +176,9 @@ def musicdownload():
     print ('write the link of youtube video that you want do download')
     ytmusiclink = input()
     yt = YouTube(ytmusiclink)
-    stream = yt.streams.filter(audio_only=True).first()
+    stream = yt.streams.filter(only_audio=True).first()
     stream.download("music")
+    print('done')
 
 def musicdownloadcheck():
     if 'youtube download music' == cmd:
@@ -257,7 +280,7 @@ def haveibeenpwned():
     print('if its how many times:')
     print(parsed_json2['seen'])
 
-#seen
+
 
 def haveibeenpwndedcheck():
     if 'haveibeenpwned' == cmd:
@@ -316,9 +339,53 @@ def langdetectcheck():
     if 'langdetect' == cmd:
         langdetect()
 
+def blacklistwgz():
+    filename = 'blackweb.tar.gz'
+    tar = tarfile.open(filename)
+    tar.extractall()
+    tar.close()
 
+def blacklistwopen():
+    print('write the link to web adress')
+    sitel = input()
+    with open('blackweb.txt') as f:
+        if sitel in f.read():
+            print("found " + sitel + ' in black list dont go there!')
+        else: 
+            print ('not found')
 
+def blacklistwhelpc():
+    if 'webblacklist' == cmd:
+        blacklistwhelp()
 
+def blacklistwopenc():
+    if 'webblacklist search' == cmd:
+        blacklistwopen()
+
+def blacklistwdownloader():
+    url = "https://github.com/maravento/blackweb/raw/master/blackweb.tar.gz"
+    r = urllib.request.urlopen(url)
+    with open("blackweb.tar.gz", "wb") as f:
+        f.write(r.read())
+    print('done!')
+
+def blacklistwhelp():
+    print('commands:')
+    print('webblacklist search')
+    print('webblacklist download')
+
+def webblacklistdownloaderc():
+    if 'webblacklist download' == cmd:
+        blacklistwdownloader()
+        blacklistwgz()
+def shadoweval():
+    print('shadow eval')
+    shadowcmd = input()
+    eval(shadowcmd)
+
+def shadowevalc():
+    if 'shadoweval' == cmd:
+        shadoweval()
 while True:
     cmd = input()
     systemcheck()
@@ -343,3 +410,6 @@ while True:
     sourcecodecheck()
     qrcodecheck()
     langdetectcheck()
+    shadowevalc()
+    blacklistwhelpc()
+    webblacklistdownloaderc()
