@@ -340,17 +340,15 @@ def langdetectcheck():
         langdetect()
 
 def blacklistwgz():
-    filename = 'blackweb.tar.gz'
-    tar = tarfile.open(filename)
+    tar = tarfile.open(name='blackweb.tar.gz', mode='r:gz')
     tar.extractall()
-    tar.close()
 
 def blacklistwopen():
     print('write the link to web adress')
     sitel = input()
     with open('blackweb.txt') as f:
         if sitel in f.read():
-            print("found " + sitel + ' in black list dont go there!')
+            print("found " + sitel + ' in list go at your own risk')
         else: 
             print ('not found')
 
@@ -363,7 +361,7 @@ def blacklistwopenc():
         blacklistwopen()
 
 def blacklistwdownloader():
-    url = "https://github.com/maravento/blackweb/raw/master/blackweb.tar.gz"
+    url = "https://github.com/takipsizad/webblacklist/raw/main/blackweb.tar.gz"
     r = urllib.request.urlopen(url)
     with open("blackweb.tar.gz", "wb") as f:
         f.write(r.read())
@@ -377,6 +375,7 @@ def blacklistwhelp():
 def webblacklistdownloaderc():
     if 'webblacklist download' == cmd:
         blacklistwdownloader()
+        print('download done!')
         blacklistwgz()
 def shadoweval():
     print('shadow eval')
