@@ -18,12 +18,18 @@ import urllib.request
 import urllib.request
 import shutil
 import tarfile
+from pypresence import Presence
+import time
 
+client_id = ''  
+RPC = Presence(client_id)  
+RPC.connect() 
+RPC.update(state="Running terminal", details="Running terminal",large_image="icon", large_text="made by takipsizad",small_image="icon2", small_text="Have a good day!",start=int(time.time()) )
 pip = 'pip install '
 system = platform.platform()
 release = platform.release()
 version = platform.version()
-print('design by takipsizad 2020  currently working on ' + system + version + ' \n source code: write sourcecode to open github page')
+print('design by takipsizad 2020  currently working on ' + system + version + '\n source code: write sourcecode to open github page')
 
 def systemcheck():
     if 'system' == cmd:
@@ -111,6 +117,8 @@ def help():
     print('ip')
     time.sleep(0.2)
     print('webblacklist')
+    time.sleep(0.2)
+    print('discordrpc')
     print ('   ')
 
 def executes():
@@ -385,6 +393,32 @@ def shadoweval():
 def shadowevalc():
     if 'shadoweval' == cmd:
         shadoweval()
+
+def discordrpco():
+    RPC.update(state="Running terminal", details="Running terminal",large_image="icon", large_text="made by takipsizad",small_image="icon2", small_text="Have a good day!",start=int(time.time()))
+    print('restarted discordrpc')
+def discordrpcoc():
+    if 'discordrpc' == cmd:
+        discordrpco()
+
+def textread():
+    print('enter file name without .txt ')
+    filename = input()
+    ObjRead = open(filename + ".txt", "r")
+    txtContent = ObjRead.read();
+    root = Tk()
+    root.geometry('350x80')
+    root.configure(background='#F0F8FF')
+    root.title('Terminal text widget')
+    Label(root, text=txtContent, bg='#F0F8FF', font=('arial', 12, 'normal')).place(x=1, y=10)
+    RPC.update(state="Running terminal text widget", details=txtContent,large_image="icon", large_text="made by takipsizad",small_image="icon2", small_text="Have a good day!",start=int(time.time()) )
+    ObjRead.close()
+    time.sleep(15)
+    discordrpco()
+
+def textwidget():
+    if 'textwidget' == cmd:
+        textread()
 while True:
     cmd = input()
     systemcheck()
@@ -412,3 +446,5 @@ while True:
     shadowevalc()
     blacklistwhelpc()
     webblacklistdownloaderc()
+    discordrpcoc()
+    textwidget()
