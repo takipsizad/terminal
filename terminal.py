@@ -1,3 +1,7 @@
+import platform
+import subprocess
+import asyncio
+import websockets
 import random
 import socket
 import json
@@ -31,8 +35,13 @@ release = platform.release()
 version = platform.version()
 print('design by takipsizad 2020  currently working on ' + system + version + '\n source code: write sourcecode to open github page')
 if ('true' == discordrpc):
-    RPC.connect()
-    RPC.update(state="Running terminal", details="Running terminal",large_image="icon", large_text="made by takipsizad",small_image="icon2", small_text="Have a good day!",start=int(time.time()))
+    try:
+        RPC.connect()
+        RPC.update(state="Running terminal", details="Running terminal",large_image="icon", large_text="made by takipsizad",small_image="icon2", small_text="Have a good day!",start=int(time.time()))
+    except:
+        pass
+        
+
     
 
 def systemcheck():
@@ -438,15 +447,17 @@ def settingse():
     for key in config['settings']:  
         print(key)
     setting = input()
-    print(settings[setting])
+    value = config['settings'][setting]
+    print(value)
     print("write the value that you want to change")
-    value = input()
-    config['setting'][setting] = value
+    newvalue = input()
+    config['settings'][setting] = newvalue
+    print('done!')
     with open('settings.ini', 'w') as configfile:
         config.write(configfile)
 def settingec():
     if 'setting' == cmd:
-        settinge()
+        settingse()
 while True:
     cmd = input()
     systemcheck()
@@ -478,3 +489,4 @@ while True:
     textwidget()
     blacklistwopenc()
     serverversionc()
+    settingec()
