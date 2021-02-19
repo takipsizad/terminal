@@ -33,7 +33,7 @@ pip = 'pip install '
 system = platform.platform()
 release = platform.release()
 version = platform.version()
-print('designed by Eren#1000 (478937019758673931) 2020  currently working on ' + system + version + '\n source code: write sourcecode to open github page')
+print('designed by takipsiz ad and Eren#1000 (478937019758673931) 2020  currently working on ' + system + version + '\n source code: write sourcecode to open github page')
 if ('true' == discordrpc):
     try:
         RPC.connect()
